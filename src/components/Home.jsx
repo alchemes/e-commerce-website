@@ -1,10 +1,9 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Home.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
-  const currentYear = new Date().getFullYear(); 
+  const currentYear = new Date().getFullYear();
 
   return (
     <div className="home-container">

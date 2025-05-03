@@ -1,11 +1,18 @@
 // src/components/Contact.jsx
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import './Contact.css';
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import emailjs from "emailjs-com"; // Import EmailJS
+
+import "./Contact.css";
 
 const Contact = () => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const handleMessageChange = (event) => {
     setMessage(event.target.value);
@@ -13,8 +20,24 @@ const Contact = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert('Message sent: ' + message);
-    setMessage('');
+
+    // Send email via EmailJS
+    console.log({ message });
+    emailjs
+      .send(
+        "service_cdegjfl", // Replace with your Service ID
+        "template_hudgqt7", // Replace with your Template ID
+        { message: message }, // Data to send
+        "Tlpn2u3frnQzDygJg" // Replace with your User ID / Public Key
+      )
+      .then((response) => {
+        alert("Your message has been sent successfully!");
+        setMessage("");
+      })
+      .catch((error) => {
+        console.error("Failed to send message:", error);
+        alert("Failed to send message. Please try again later.");
+      });
   };
 
   return (
@@ -23,22 +46,38 @@ const Contact = () => {
       <p>Feel free to reach out to us through our social media platforms:</p>
       <ul className="social-media">
         <li>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faFacebook} size="2x" />
           </a>
         </li>
         <li>
-          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faTwitter} size="2x" />
           </a>
         </li>
         <li>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faInstagram} size="2x" />
           </a>
         </li>
         <li>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faLinkedin} size="2x" />
           </a>
         </li>
@@ -57,22 +96,26 @@ const Contact = () => {
           />
         </div>
         <button
-  type="submit"
-  style={{
-    padding: '10px 15px',
-    backgroundColor: '#282c34', 
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s, transform 0.2s',
-    fontSize: '16px',
-  }}
-  onMouseOver={(e) => (e.currentTarget.style.backgroundColor = '#45a049')}
-  onMouseOut={(e) => (e.currentTarget.style.backgroundColor = '#4CAF50')}
->
-  Send Message
-</button>
+          type="submit"
+          style={{
+            padding: "10px 15px",
+            backgroundColor: "#282c34",
+            color: "white",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            transition: "background-color 0.3s, transform 0.2s",
+            fontSize: "16px",
+          }}
+          onMouseOver={(e) =>
+            (e.currentTarget.style.backgroundColor = "#45a049")
+          }
+          onMouseOut={(e) =>
+            (e.currentTarget.style.backgroundColor = "#4CAF50")
+          }
+        >
+          Send Message
+        </button>
       </form>
     </div>
   );

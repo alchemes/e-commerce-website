@@ -1,0 +1,106 @@
+/* CreateProfile.css */
+
+.create-profile-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f8fa;
+    padding: 20px;
+  }
+  
+  /* Style the heading */
+  .create-profile-page h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  /* Form container */
+  .create-profile-page form {
+    max-width: 600px;
+    margin: 0 auto;
+    /* background-color: #ffffff; */
+    padding: 30px;
+    border-radius: 12px;
+  
+  }
+  
+  /* Container for each input section */
+  .create-profile-page .container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Labels styling */
+  .create-profile-page label {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    color: #555;
+  }
+  
+  /* Input fields styling */
+  .create-profile-page input[type='text'],
+  .create-profile-page input[type='email'],
+  .create-profile-page input[type='tel'],
+  .create-profile-page input[type='file'] {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .create-profile-page input[type='text']:focus,
+  .create-profile-page input[type='email']:focus,
+  .create-profile-page input[type='tel']:focus,
+  .create-profile-page input[type='file']:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+  }
+  
+  /* Placeholder styling */
+  .create-profile-page input::placeholder {
+    color: #aaa;
+  }
+  
+  /* Error message styles */
+  .create-profile-page .error-message {
+    font-size: 0.9rem;
+    color: #d9534f; /* Bootstrap red */
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  
+  /* Button styles */
+  .create-profile-page button.button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 20px;
+  }
+  
+  .create-profile-page button.button:hover {
+    background-color: #0069d9;
+    transform: translateY(-2px);
+  }
+  
+  .create-profile-page button.button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 620px) {
+    .create-profile-page form {
+      padding: 20px;
+    }
+  }

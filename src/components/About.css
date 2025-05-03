@@ -1,6 +1,6 @@
 /* src/components/About.css */
 
-.about-container {
+/* .about-container {
     padding: 2rem;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -39,4 +39,59 @@
       opacity: 1;
       transform: translateY(0);
     }
+  } */
+
+  .about-container {
+    padding: 3rem;
+    background-color: #f4f8f8; /* Lighter background */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    max-width: 800px;
+    margin: 3rem auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e0f0f0; /* тонкая обводка */
   }
+  
+  .about-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1); /* Increased shadow on hover */
+  }
+  
+  .about-title {
+    font-size: 3rem;
+    color: #2c3e50; /* Darker, more sophisticated title color */
+    margin-bottom: 2rem;
+    animation: fadeIn 1s, textShadow 1s ease infinite alternate; /* Added text shadow */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .about-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4a5568; /* Slightly darker description color */
+    animation: fadeIn 1.5s;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes textShadow {
+    from {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    to {
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    }
+  }
+  

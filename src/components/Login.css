@@ -43,3 +43,9 @@
   button:hover {
     background-color: #4CAF50; 
   }
+  #username{
+    width:90%;
+  }
+  #password{
+    width:90%;
+  }

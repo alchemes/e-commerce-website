@@ -10,9 +10,13 @@ import Contact from './components/Contact';
 import PostItem from './components/PostItem';
 import Payment from './components/Payment.';
 import Profile from './components/Profile';
-import ProductDetails from './components/ProductDetails';
 import Subscription from './components/subscription';
-
+import CreateProfile from './components/register';
+import PersonalProducts from './components/personalproduct';
+import DeliveryPage from './components/Deliverypage';
+import DeliveryDetailsPageWrapper from './components/deliverydetails';
+import OrderConfirmation from './components/orderdetail';
+import TrackOrder from './components/trackorder';
 import './App.css';
 
 
@@ -40,7 +44,7 @@ function App() {
             path="/products" 
             element={<Product postedItems={postedItems} />} 
           />
-          <Route path="/product-details" element={<ProductDetails />} />
+          {/* <Route path="/product-details" element={<ProductDetails />} /> */}
           <Route 
             path="/payment" 
             element={<Payment />} // Route to the Payment component
@@ -48,6 +52,12 @@ function App() {
          
           <Route path="/contact" element={<Contact />} />
           <Route path="/subscription" element={<Subscription/>}/>
+          <Route path="/createprofile" element={<CreateProfile/>}/>
+          <Route path="/personalproduct" element={<PersonalProducts/>}/>
+          <Route path='/deliverypage' element={<DeliveryPage/>}/>
+          <Route path='/deliverydetails' element={<DeliveryDetailsPageWrapper/>}/>
+          <Route path='/order-confirmation' element={<OrderConfirmation/>}/>
+          <Route path='/trackorder' element={<TrackOrder/>}/>
         </Routes>
       </div>
     </Router>

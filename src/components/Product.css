@@ -6,13 +6,13 @@
 .product-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Space out product items */
+  gap:20px;/* Space out product items */
 }
 
 .product-item {
     position: relative;
     width: calc(33.333% - 20px); /* Three items per row, adjusting for margin */
-    margin: 10px;
+    margin: 0px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -94,7 +94,28 @@ button:hover {
 .quantity-controls button {
     width: 40px;
 }
-
+.go-to {
+    margin-top: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #2600ff; /* Your primary color */
+    padding: 15px 30px; /* Slightly larger padding for better appearance */
+    border-radius: 8px; /* Rounded corners */
+    border: none; /* Remove default border */
+    color: #fff; /* Text color */
+    font-size: 16px; /* Readable font size */
+    font-weight: 600; /* Slightly bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  /* Add a hover effect for interactivity */
+  .go-to:hover {
+    background-color: #1a00cc; /* Slightly darker shade on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateX(-50%) translateY(-2px); /* Slight lift effect */
+  }
 @media (max-width: 768px) {
     .product-item {
         width: calc(50% - 20px); 
