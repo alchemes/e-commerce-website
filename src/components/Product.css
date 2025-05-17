@@ -98,7 +98,7 @@ button:hover {
     margin-top: 10px;
     margin-left: 50%;
     transform: translateX(-50%); /* Center horizontally */
-    background-color: #2600ff; /* Your primary color */
+    background-color: #040210; /* Your primary color */
     padding: 15px 30px; /* Slightly larger padding for better appearance */
     border-radius: 8px; /* Rounded corners */
     border: none; /* Remove default border */
@@ -112,7 +112,7 @@ button:hover {
   
   /* Add a hover effect for interactivity */
   .go-to:hover {
-    background-color: #1a00cc; /* Slightly darker shade on hover */
+    background-color: #27aa4f; /* Slightly darker shade on hover */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
     transform: translateX(-50%) translateY(-2px); /* Slight lift effect */
   }

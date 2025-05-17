@@ -1,5 +1,5 @@
 
-.container {
+/* .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -97,13 +97,136 @@ h1, h2 {
     margin: 10px 0; 
     font-size: 1rem; 
     color: #333;
+} */
+
+.card-body{
+    display: flex;
+    justify-content: center;
+  
 }
 
+.profile-page .profile-pic {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border: 3px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
+.profile-page .profile-card {
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width:70%;
+  margin-left: 20%;
+}
 
+.profile-page .profile-card:hover {
+  transform: translateY(-8px);
+}
 
+.profile-page .btn-primary {
 
-/* Profile.css */
+ 
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
 
+.profile-page .btn-primary:hover {
+  transform: scale(1.05);
+}
 
-  
+.profile-page .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.profile-page .btn-success:hover {
+  background-color: transparent;
+  border-color: #1e7e34;
+  transform: scale(1.05);
+}
+
+.profile-page .btn-outline-primary {
+
+border-color: #0c100d;
+  border-radius: 8px;
+  border-width: 2px;
+  padding: 10px 24px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.profile-page .btn-outline-primary:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.profile-page .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.profile-page .btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #5a6268;
+  transform: scale(1.05);
+}
+
+.profile-page .alert-success {
+  border-radius: 8px;
+  background-color: #d4edda;
+  color: #155724;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-page .form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  transition: border-color 0.2s ease;
+ 
+ 
+}
+
+.profile-page .form-control:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 0.2rem rgba(26, 115, 232, 0.25);
+}
+
+.profile-page h1,
+.profile-page h2 {
+  color: #212529;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.profile-page .card-title {
+  color: #212529;
+  font-weight: 600;
+  margin-top: 2%;
+}
+
+.profile-page .card-text {
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.profile-page .form-label {
+  color: #212529;
+  font-weight: 500;
+ 
+}

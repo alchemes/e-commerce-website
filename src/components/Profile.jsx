@@ -676,6 +676,7 @@ export default Profile; */
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./Profile.css";
 
 const Profile = () => {
@@ -690,13 +691,13 @@ const Profile = () => {
   const [profilePicture, setProfilePicture] = useState(null);
   const [newProfilePicture, setNewProfilePicture] = useState(null);
   const [subscriptionExpired, setSubscriptionExpired] = useState(false);
-  const [message, setMessage] = useState(""); // For profile update success
+  const [message, setMessage] = useState("");
 
   const fetchProfile = async () => {
     setLoading(true);
     setError("");
     const userId = localStorage.getItem("userId");
-    console.log("User ID from localStorage:", userId); // Debug log
+    console.log("User ID from localStorage:", userId);
     if (userId) {
       try {
         const response = await fetch(
@@ -707,17 +708,17 @@ const Profile = () => {
             },
           }
         );
-        console.log("API response status:", response.status); // Debug log
+        console.log("API response status:", response.status);
         if (response.ok) {
           const data = await response.json();
-          console.log("Full API response data:", JSON.stringify(data, null, 2)); // Debug log
+          console.log("Full API response data:", JSON.stringify(data, null, 2));
           setName(data.name || "");
           setEmail(data.email || "");
           setPhone(data.phone || "");
           setAddress(data.address || "");
           setProfilePicture(data.profile_picture || null);
           setSubscriptionExpired(data.subscriptionExpired || false);
-          console.log("Subscription expired set to:", data.subscriptionExpired); // Debug log
+          console.log("Subscription expired set to:", data.subscriptionExpired);
         } else if (response.status === 404) {
           console.log("Profile not found, redirecting to create profile.");
           navigate("/createprofile");
@@ -802,9 +803,9 @@ const Profile = () => {
     console.log(
       "Post Products clicked, subscriptionExpired:",
       subscriptionExpired
-    ); // Debug log
+    );
     if (subscriptionExpired) {
-      console.log("Triggering alert for post products"); // Debug log
+      console.log("Triggering alert for post products");
       window.alert(
         "Your subscription has expired. Please renew to post products."
       );
@@ -815,115 +816,180 @@ const Profile = () => {
   };
 
   if (loading) {
-    return <div>Loading profile...</div>;
+    return (
+      <div className="profile-page d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="error-message">{error}</div>;
+    return (
+      <div className="profile-page container mt-5">
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h1>Your Profile</h1>
-      {message && <div className="message">{message}</div>}
-
-      {!isEditing ? (
-        <div>
-          {profilePicture && (
-            <img
-              src={profilePicture}
-              alt="Profile"
-              style={{ maxWidth: "200px", maxHeight: "200px" }}
-            />
-          )}
-          <p>
-            <strong>Name:</strong> {name}
-          </p>
-          <p>
-            <strong>Email:</strong> {email}
-          </p>
-          <p>
-            <strong>Phone:</strong> {phone}
-          </p>
-          <p>
-            <strong>Address:</strong> {address}
-          </p>
-          {subscriptionExpired && (
-            <p style={{ color: "red" }}>
-              Your subscription has expired. Please renew to use our services.
-            </p>
-          )}
-          <button className="button" onClick={handleEditClick}>
-            Update Profile
-          </button>
+    <div className="profile-page container mt-5">
+      <h1 className="text-center mb-4">Your Profile</h1>
+      {message && (
+        <div
+          className="alert alert-success alert-dismissible fade show"
+          role="alert"
+        >
+          {message}
+          <button
+            type="button"
+            className="btn-close"
+            onClick={() => setMessage("")}
+          ></button>
         </div>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <div className="container">
-            <div className="name-label">
-              <label className="name">Profile Picture:</label>
-              <input
-                className="inputname"
-                type="file"
-                onChange={handleFileChange}
-                accept="image/*"
-              />
-            </div>
-            <div className="name-label">
-              <label className="name">Name:</label>
-              <input
-                className="inputname"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </div>
-            <div className="name-label">
-              <label className="name">Email:</label>
-              <input
-                className="inputname"
-                type="email"
-                value={email}
-                readOnly
-              />
-            </div>
-            <div className="name-label">
-              <label className="name">Phone:</label>
-              <input
-                className="inputname"
-                type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-              />
-            </div>
-            <div className="name-label">
-              <label className="name">Address:</label>
-              <input
-                className="inputname"
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                required
-              />
-            </div>
-            <button className="button" type="submit">
-              Save Changes
-            </button>
-            <button className="button" type="button" onClick={handleCancelEdit}>
-              Cancel
-            </button>
-          </div>
-        </form>
       )}
 
-      <h2>Choose What you want:</h2>
-      <div className="containerr">
-        <button className="button" onClick={handleViewProductsClick}>
+      <div className="profile-card shadow-sm">
+        <div className="card-body">
+          {!isEditing ? (
+            <div className="row">
+              <div className="col-md-4 text-center">
+                {profilePicture ? (
+                  <img
+                    src={profilePicture}
+                    alt="Profile"
+                    className="img-fluid rounded-circle mb-3 profile-pic"
+                  />
+                ) : (
+                  <div className="rounded-circle bg-secondary d-flex align-items-center justify-content-center mb-3 profile-pic">
+                    <span className="text-white fs-3">
+                      {name.charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                )}
+              </div>
+              <div className="col-md-8">
+                <h4 className="card-title">{name}</h4>
+                <p className="card-text">
+                  <strong>Email:</strong> {email}
+                </p>
+                <p className="card-text">
+                  <strong>Phone:</strong> {phone}
+                </p>
+                <p className="card-text">
+                  <strong>Address:</strong> {address}
+                </p>
+                {subscriptionExpired && (
+                  <p className="text-danger">
+                    Your subscription has expired. Please renew to use our
+                    services.
+                  </p>
+                )}
+                <button
+                  className="btn btn-primary mt-3 mb-3"
+                  onClick={handleEditClick}
+                >
+                  Update Profile
+                </button>
+              </div>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="profilePicture" className="form-label">
+                  Profile Picture
+                </label>
+                <input
+                  type="file"
+                  className="form-control"
+                  id="profilePicture"
+                  onChange={handleFileChange}
+                  accept="image/*"
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  value={email}
+                  readOnly
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="phone" className="form-label">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  className="form-control"
+                  id="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="address" className="form-label">
+                  Address
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="address"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="d-flex gap-2">
+                <button type="submit" className="btn btn-success">
+                  Save Changes
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={handleCancelEdit}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+
+      <h2 className="mt-5 mb-3 text-center">Choose Your Action</h2>
+      <div className="d-flex justify-content-center gap-3">
+        <button
+          className="btn btn-outline-primary btn-lg"
+          onClick={handleViewProductsClick}
+        >
           View Products
         </button>
-        <button className="button" onClick={handlePostProductsClick}>
+        <button
+          className="btn btn-outline-primary btn-lg"
+          onClick={handlePostProductsClick}
+        >
           Post Products
         </button>
       </div>
